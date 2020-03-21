@@ -49,7 +49,7 @@ export const AddCodeBase = () => {
    const [spinnerClass, setSpinnerClass] = useState('displayNone');
    const [msg, setMsg] = useState('');
    const [alertColor, setAlertColor] = useState('info');
-   const [file, setFile] = useState('');
+   const [file, setFile] = useState();
    const [fileName, setFileName] = useState('');
    const [fileSize, setFileSize] = useState('');
    const [uploadRunning, setUploadRunning] = useState(0);
@@ -174,22 +174,25 @@ export const AddCodeBase = () => {
       });
    };
    const onChangeHandler = (event) => {
-      var mime = event.target.files[0].type;
-      if (event.target.files[0].size > 11000000) {
-         setAlertColor('danger');
-         setMsg('This file size is too big (10MB max)');
-         setMsgClass('displayBlock');
-      } else if (mime === undefined || !mime.includes('image')) {
-         setAlertColor('danger');
-         setMsg('Wrong filetype: must be Image');
-         setMsgClass('displayBlock');
-      } else {
-         setAlertColor('success');
-         setMsg('File size is accpeted');
-         setFileName(event.target.files[0].name); // doing singe file at a time for AWS
-         setFileSize(event.target.files[0].size);
-         setMsgClass('displayBlock');
-         console.log(event.target.files[0]);
+      if (event.target.files[0] !== undefined) {
+         var mime = event.target.files[0].type;
+         if (event.target.files[0].size > 11000000) {
+            setAlertColor('danger');
+            setMsg('This file size is too big (10MB max)');
+            setMsgClass('displayBlock');
+         } else if (mime === undefined || !mime.includes('image')) {
+            setAlertColor('danger');
+            setMsg('Wrong filetype: must be Image');
+            setMsgClass('displayBlock');
+         } else {
+            setAlertColor('success');
+            setFile(event.target.files[0]);
+            setFileName(event.target.files[0].name); // doing singe file at a time for AWS
+            setFileSize(event.target.files[0].size);
+            setMsgClass('displayBlock');
+            setMsg('File size is accpeted - ' + event.target.files[0].name);
+            console.log(event.target.files[0]);
+         }
       }
    };
    // on page load / componentDidMount

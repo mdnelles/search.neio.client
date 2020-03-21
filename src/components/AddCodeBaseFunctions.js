@@ -62,7 +62,9 @@ export const addEntry = async (
    title,
    intro,
    code,
-   keywords
+   keywords,
+   fileName,
+   fileSize
 ) => {
    try {
       const res = await axios.post(
@@ -73,6 +75,8 @@ export const addEntry = async (
             intro,
             code,
             keywords,
+            fileName,
+            fileSize,
             token: theToken,
             caller: 'AddCodeBaseFunctions.addEntry'
          }
