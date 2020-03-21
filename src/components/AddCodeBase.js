@@ -95,13 +95,15 @@ export const AddCodeBase = () => {
       setMsg(`Uploading Media ...`);
       setViewProgress('displayBlock');
 
+      console.log('serverPath = ' + serverPath);
+
       var formData = new FormData();
       var xhr = new XMLHttpRequest();
 
       formData.append('files', file); // this is a state object set onChange
       formData.append('token', thetoken);
       formData.append('caller', 'Mediajs.startUploadFile');
-      xhr.open('post', 'serverPath + /search/uploadfile', true);
+      xhr.open('post', serverPath + '/search/uploadfile', true);
 
       xhr.addEventListener('error', errorHandler, false);
       xhr.upload.addEventListener('progress', uploadProgressHandler, false);
