@@ -17,6 +17,11 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+import './config';
+var thisServer = window.location.href;
+var serverPath = global.config.routerPath;
+if (thisServer.includes('3000')) serverPath = global.config.devPath;
+
 const useStyles = makeStyles((theme) => ({
    formControl: {
       margin: theme.spacing(1),
@@ -96,7 +101,7 @@ export const AddCodeBase = () => {
       formData.append('files', file); // this is a state object set onChange
       formData.append('token', thetoken);
       formData.append('caller', 'Mediajs.startUploadFile');
-      xhr.open('post', '/search/uploadfile', true);
+      xhr.open('post', 'serverPath + /search/uploadfile', true);
 
       xhr.addEventListener('error', errorHandler, false);
       xhr.upload.addEventListener('progress', uploadProgressHandler, false);
