@@ -2,15 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { getTtypes, addEntry } from './AddCodeBaseFunctions';
 import localForage from 'localforage';
 
+import { Msg } from './CustomWidget';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Checkbox from '@material-ui/core/Checkbox';
-//import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-//import CheckBoxIcon from '@material-ui/icons/CheckBox';
-//import FormHelperText from '@material-ui/core/FormHelperText';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -124,12 +122,7 @@ export const AddCodeBase = () => {
   return (
     <div id='main' className='body'>
       <h3>Add to CodeBase</h3> <br />
-      <div className={msgClass}>
-        <div className={spinnerClass}>
-          <CircularProgress />
-        </div>
-        {msg}
-      </div>
+      <Msg msgClass={msgClass} spinnerClass={spinnerClass} msg={msg} />
       <div className={gridClass}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
