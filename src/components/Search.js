@@ -142,7 +142,7 @@ const TheSearchResult = (props) => {
 
                   {/*  Image */}
                   <div>
-                     <img src={'/uploads/' + props.image} alt={props.image} />
+                     <img src={'/upload/' + props.image} alt={props.image} />
                   </div>
 
                   <div
