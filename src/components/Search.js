@@ -127,6 +127,7 @@ const TheSearchResult = (props) => {
                      className='displayNone'
                      style={lgBg}
                   >
+                     {/* code */}
                      <TextField
                         style={{ color: '#fff' }}
                         id={'txtCode-' + props.id}
@@ -138,6 +139,12 @@ const TheSearchResult = (props) => {
                         fullWidth={true}
                      />
                   </div>
+
+                  {/*  Image */}
+                  <div>
+                     <img src={'/uploads/' + props.image} alt={props.image} />
+                  </div>
+
                   <div
                      style={{ padding: 5, justify: 'center' }}
                      className='displayNone'
@@ -191,6 +198,7 @@ const AllSearchRes = (props) => {
                intro={result.intro}
                keywords={result.keywords}
                date1={result.keywords}
+               image={result.image}
                swapEditable={props.swapEditable}
                removeEntryStart={props.removeEntryStart}
                bgc={result.bgc}
