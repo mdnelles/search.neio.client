@@ -3,7 +3,8 @@ import Alert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const ms = {
-   margin: 3
+   marginTop: 3,
+   marginBottom: 3
 };
 
 export const Msg = (props) => {
@@ -12,7 +13,7 @@ export const Msg = (props) => {
          <div className={props.spinnerClass}>
             <CircularProgress />
          </div>
-         <Alert severity='info'>{props.msg}</Alert>
+         <Alert severity={props.alertColor}>{props.msg}</Alert>
       </div>
    );
 };

@@ -214,6 +214,7 @@ export const Search = () => {
       updEntry(id, title, intro, code, thetoken).then((res) => {
          setSpinnerClass('displayNone');
          setMsg('Database Entry edited succcessfully');
+         setAlertColor('success');
 
          document.getElementById(
             'title-' + id
@@ -261,6 +262,7 @@ export const Search = () => {
    const [msgClass, setMsgClass] = useState('displayNone');
    const [spinnerClass, setSpinnerClass] = useState('displayNone');
    const [msg, setMsg] = useState('');
+   const [alertColor, setAlertColor] = useState('info');
 
    useEffect(() => {
       let temp = window.location.href.toString().split('/');
@@ -278,7 +280,12 @@ export const Search = () => {
       <div id='main' className='body'>
          <h3>Search</h3>
          <Alert severity='info'>Query &#8658; {searchQuery}</Alert>
-         <Msg msgClass={msgClass} spinnerClass={spinnerClass} msg={msg} />
+         <Msg
+            msgClass={msgClass}
+            spinnerClass={spinnerClass}
+            msg={msg}
+            alertColor={alertColor}
+         />
          <AllSearchRes
             searchResults={searchResults}
             swapEditable={swapEditable}

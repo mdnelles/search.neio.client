@@ -32,6 +32,11 @@ export const Navbar = () => {
       setAnchorEl(null);
    };
 
+   const handleDB = () => {
+      setAnchorEl(null);
+      window.open('https://lakes.world/mdb/dba/', '_blank').focus();
+   };
+
    React.useEffect(() => {
       //localForage.getItem('token', function(err, theToken) {
       if (afDone === false) {
@@ -44,7 +49,7 @@ export const Navbar = () => {
             }
          });
       }
-   }, [afDone]);
+   }, [afDone, searchTitles.length]);
 
    /////////////////////////////////////// material ui theming
 
@@ -107,7 +112,7 @@ export const Navbar = () => {
                      <MenuItem onClick={handleClose} id='users'>
                         Users
                      </MenuItem>
-                     <MenuItem onClick={handleClose} id='pma'>
+                     <MenuItem onClick={handleDB} id='pma'>
                         PhpMyAdmin
                      </MenuItem>
                      <MenuItem onClick={handleClose} id='categories'>
@@ -118,7 +123,7 @@ export const Navbar = () => {
                </div>
             </Grid>
 
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} sm={9}>
                <form className={classes.root} noValidate>
                   <Autocomplete
                      id='autocomplete'
@@ -148,7 +153,7 @@ export const Navbar = () => {
                </form>
             </Grid>
 
-            <Grid item xs={1} sm={1}>
+            <Grid item xs={4} sm={2}>
                <AddCircleOutlineIcon
                   className='pointer'
                   style={{ fill: 'white', marginTop: 10 }}
