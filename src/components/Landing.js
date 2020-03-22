@@ -49,7 +49,7 @@ const Msgbar = (props) => {
 
 export const Landing = () => {
    const [email, setEmail] = useState('mxnelles@gmail.com'),
-      [password, setPassword] = useState(''),
+      [password, setPassword] = useState('password'),
       [msg, setMsg] = useState('Enter valid credentials to proceed'),
       [spinVis, setSpinVis] = useState('visible'),
       classes = useStyles(); // for materialui
