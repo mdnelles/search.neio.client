@@ -144,8 +144,9 @@ export const AddCodeBase = () => {
          setMsg('New Entry added to Database');
          setTimeout(() => {
             setViewProgress('displayNone');
-            setMsgClass('displayNone');
-         }, 3000);
+            setSpinnerClass('displayNone');
+            setMsg('Record added to Database.  Please continue.');
+         }, 1000);
       }
 
       setMsg(resMsg);
@@ -177,7 +178,15 @@ export const AddCodeBase = () => {
          fileName,
          fileSize
       ).then((res) => {
-         startUploadFile();
+         if (fileName !== '') {
+            startUploadFile();
+         } else {
+            setTimeout(() => {
+               setViewProgress('displayNone');
+               setSpinnerClass('displayNone');
+               setMsg('Record added to Database.  Please continue.');
+            }, 1000);
+         }
       });
    };
    const onChangeHandler = (event) => {
