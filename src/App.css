@@ -1,142 +1,157 @@
 body {
-  background-color: #333333;
-  font-family: Ubuntu, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   background-color: #333333;
+   font-family: Ubuntu, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
 }
 .App {
-  /*
+   /*
   text-align: center;
   */
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+   height: 40vmin;
+   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+   .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+   }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+   background-color: #282c34;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-size: calc(10px + 2vmin);
+   color: white;
 }
 
 .App-link {
-  color: #61dafb;
+   color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+   from {
+      transform: rotate(0deg);
+   }
+   to {
+      transform: rotate(360deg);
+   }
 }
 .hid {
-  display:none;
+   display: none;
 }
 .visible {
-  display:block;
+   display: block;
 }
 .bottom-align {
-  vertical-align: text-bottom;
+   vertical-align: text-bottom;
 }
 .box1 {
-  padding:10px;
-  border-radius:5px;
-  background-color:#b0b0a5;
-  max-width: 300px;
+   padding: 10px;
+   border-radius: 5px;
+   background-color: #b0b0a5;
+   max-width: 300px;
 }
 .vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+   margin: 0;
+   position: absolute;
+   top: 50%;
+   -ms-transform: translateY(-50%);
+   transform: translateY(-50%);
 }
 .center {
-  margin: auto;
-  text-align: center;
+   margin: auto;
+   text-align: center;
 }
 .outlines {
-  border:1px solid #61dafb;
+   border: 1px solid #61dafb;
 }
 .center-inner {
-  display: table;
-  margin: 0 auto;
+   display: table;
+   margin: 0 auto;
 }
 
 .center-outer {
-  width:100%
+   width: 100%;
 }
 .navAppBar {
-  /*height:20px; */
-  line-height: 25px;
-  padding-top:5px;
-  padding-bottom:5px;
-  width:100%;
-  position:fixed;
-  z-index:100;
-  top:0px;
-  left:0px;
-  background-color: #1976d2;
-  color:#ffffff;
+   /*height:20px; */
+   line-height: 25px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   width: 100%;
+   position: fixed;
+   z-index: 100;
+   top: 0px;
+   left: 0px;
+   background-color: #1976d2;
+   color: #ffffff;
 }
 .pointer {
-  cursor: pointer;
+   cursor: pointer;
 }
 .body {
-  padding-top: 70px;
-  padding-left:10px;
-  padding-right:10px;
-  padding-bottom:10px;
-  margin:5px;
-  background-color: #222222;
-  color:#ffffff;
-  justify-content:flex-start;
+   padding-top: 70px;
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-bottom: 10px;
+   margin: 5px;
+   background-color: #222222;
+   color: #ffffff;
+   justify-content: flex-start;
 }
 .darkbg {
-  background-color:#111111;
+   background-color: #111111;
 }
 .graybg {
-  background-color:#222222;
+   background-color: #222222;
 }
 .rowdata {
-  padding:8px;
-  color:#dddddd;
+   padding: 8px;
+   color: #dddddd;
 }
 .rowdata:hover {
-  background-color:#0f4aa8;
+   background-color: #0f4aa8;
 }
-.pbColor {  /* pointy bracket */ 
-  color:yellow;
+.pbColor {
+   /* pointy bracket */
+   color: yellow;
 }
-.cbColor { /* curly bracket color formating */
-  color:#ffcffd; /* light pink */
+.cbColor {
+   /* curly bracket color formating */
+   color: #ffcffd; /* light pink */
 }
-.rbColor { /*round bracket */
-  color:#d1ffcf; /* light green */
+.rbColor {
+   /*round bracket */
+   color: #d1ffcf; /* light green */
 }
 .displayNone {
-  display:none;
+   display: none;
 }
 .displayBlock {
-  display:block;
+   display: block;
 }
 .percWid100 {
-  width:100%
+   width: 100%;
 }
 .lgBG {
-  background-color:'#aaaaaa';
-  border-radius:3px;
+   background-color: '#aaaaaa';
+   border-radius: 3px;
+}
+.gridItem {
+   overflow: hidden;
+   padding: 3px;
+}
+.gridItem:hover {
+   border: 1px solid #bbbbbb;
+   padding: 2px;
+   z-index: 10;
+   overflow: visible;
+   cursor: pointer;
 }

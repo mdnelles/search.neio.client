@@ -30,24 +30,24 @@ const Logow = (props) => {
       <div style={rowStyle}>
          <Grid container spacing={2} className={'rowdata ' + props.bgc}>
             <Grid item xs={4} sm={2}>
-               {props.code === '200' ? <GreenCheckIcon /> : <RedErrorIcon />}{' '}
-               <Space />
-               {props.filename}
+               <span className='gridItem'>
+                  {props.code === '200' ? <GreenCheckIcon /> : <RedErrorIcon />}{' '}
+                  <Space />
+                  {props.filename}
+               </span>
             </Grid>
             <Grid item xs={4} sm={2}>
-               {props.fnction}
+               <span className='gridItem'>{props.fnction}</span>
             </Grid>
             <Grid item xs={4} sm={2}>
-               {props.msg_programmer}
+               <span className='gridItem'>{props.msg_programmer}</span>
+            </Grid>
+            <Grid item xs={8} sm={4}>
+               <span className='gridItem'>{props.msg_app}</span>,
+               <span className='gridItem'>{props.refer}</span>
             </Grid>
             <Grid item xs={4} sm={2}>
-               {props.msg_app}
-            </Grid>
-            <Grid item xs={4} sm={2}>
-               {props.refer}
-            </Grid>
-            <Grid item xs={4} sm={2}>
-               {props.tdate}
+               <span className='gridItem'>{props.tdate}</span>
             </Grid>
          </Grid>
       </div>
