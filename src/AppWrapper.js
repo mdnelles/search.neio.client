@@ -12,6 +12,7 @@ import { Navbar } from './components/Navbar';
 import { ManageCategories } from './components/ManageCategories';
 import { Search } from './components/Search';
 import { Users } from './components/Users';
+import { LogView } from './components/LogView';
 
 export const AppWrapper = () => {
    const [activeSession, setActiveSession] = useState('loading');
@@ -58,6 +59,7 @@ export const AppWrapper = () => {
                <Route exact path='/categories' component={ManageCategories} />
                <Route exact path='/add' component={AddCodeBase} />
                <Route exact path='/users' component={Users} />
+               <Route exact path='/logs' component={LogView} />
             </div>
          </div>
       );

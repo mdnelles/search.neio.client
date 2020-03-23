@@ -112,11 +112,14 @@ export const Navbar = () => {
                      <MenuItem onClick={handleClose} id='users'>
                         Users
                      </MenuItem>
-                     <MenuItem onClick={handleDB} id='pma'>
-                        PhpMyAdmin
+                     <MenuItem onClick={handleClose} id='logs'>
+                        View Logs
                      </MenuItem>
                      <MenuItem onClick={handleClose} id='categories'>
                         Manage Categories
+                     </MenuItem>
+                     <MenuItem onClick={handleDB} id='pma'>
+                        PhpMyAdmin
                      </MenuItem>
                      <MenuItem onClick={logout}>Logout</MenuItem>
                   </Menu>
