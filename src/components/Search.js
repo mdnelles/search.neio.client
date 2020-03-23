@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { doQuery, updEntry, delEntry } from './SearchFunctions';
 import localForage from 'localforage';
+import Container from '@material-ui/core/Container';
 
 import { Msg } from './CustomWidget';
 
@@ -141,9 +142,9 @@ const TheSearchResult = (props) => {
                   </div>
 
                   {/*  Image */}
-                  <div>
+                  <Container maxWidth='sm'>
                      <img src={'/upload/' + props.image} alt={props.image} />
-                  </div>
+                  </Container>
 
                   <div
                      style={{ padding: 5, justify: 'center' }}

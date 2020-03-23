@@ -82,7 +82,7 @@ export const Landing = () => {
                   localForage.setItem('token', res);
 
                   setTimeout(() => {
-                     window.location.href = '/users';
+                     window.location.href = '/add';
                   }, 1000);
                } else {
                   console.log('+++ unhandled error here: ' + __filename);

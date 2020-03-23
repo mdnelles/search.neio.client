@@ -24,8 +24,6 @@ const GreenCheckIcon = () => {
 };
 
 const Logow = (props) => {
-   let iconi = RedErrorIcon;
-   if (props.code === 200) iconi = GreenCheckIcon;
    return (
       <div style={rowStyle}>
          <Grid container spacing={2} className={'rowdata ' + props.bgc}>

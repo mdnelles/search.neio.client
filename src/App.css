@@ -149,7 +149,7 @@ body {
    padding: 3px;
 }
 .gridItem:hover {
-   border: 1px solid #bbbbbb;
+   border: 1px solid #999;
    padding: 2px;
    z-index: 10;
    overflow: visible;
