@@ -34,10 +34,22 @@ const displayToggle = (id, dtype) => {
    }
    document.getElementById(dtype + '-' + id).className = newClass;
 };
+const Bold = (props) => {
+   return (
+      <b>
+         <u>{props.txt}</u>
+      </b>
+   );
+};
 
 const TheSearchResult = (props) => {
-   let titleFormated =
+   let temp = window.location.href.toString().split('/');
+   let rest = decodeURI(temp[temp.length - 2].toString());
+   let titleFormatted =
       props.title.charAt(0).toUpperCase() + props.title.slice(1);
+   if (typeof titleFormatted && titleFormatted.includes(rest)) {
+      titleFormatted = titleFormatted.replace(rest, <Bold txt={rest} />);
+   }
    let thecode = props.code
       .toString()
       .replace(/&lt;/g, '<')
@@ -71,7 +83,8 @@ const TheSearchResult = (props) => {
                      displayToggle(props.id, 'cmd');
                   }}
                >
-                  {titleFormated}
+                  {titleFormatted}
+                  {props.search1}
                   <span style={kwStyle}>{props.keywords}</span>
                </div>
             </Grid>
@@ -203,6 +216,7 @@ const AllSearchRes = (props) => {
                swapEditable={props.swapEditable}
                removeEntryStart={props.removeEntryStart}
                bgc={result.bgc}
+               search1={result.search1}
             />
          ))}
       </div>
@@ -217,9 +231,7 @@ export const Search = () => {
       let title = document.getElementById('txtTitle-' + id).value;
       let intro = document.getElementById('txtIntro-' + id).value;
       let code = document.getElementById('txtCode-' + id).value;
-      console.log('title:\n ' + title);
-      console.log('intro:\n ' + intro);
-      console.log('code:\n ' + code);
+
       updEntry(id, title, intro, code, thetoken).then((res) => {
          setSpinnerClass('displayNone');
          setMsg('Database Entry edited succcessfully');
@@ -280,6 +292,7 @@ export const Search = () => {
       localForage.getItem('token').then(function(theToken) {
          setThetoken(theToken);
          doQuery(theToken, encodeURI(rest)).then((res) => {
+            console.log(res);
             setSearchResults(res);
          });
       });
