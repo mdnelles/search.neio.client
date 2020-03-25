@@ -36,8 +36,6 @@ const displayToggle = (id, dtype) => {
 };
 
 const TheSearchResult = (props) => {
-   let temp = window.location.href.toString().split('/');
-   let rest = decodeURI(temp[temp.length - 2].toString());
    let titleFormatted =
       props.title.charAt(0).toUpperCase() + props.title.slice(1);
 
@@ -147,7 +145,11 @@ const TheSearchResult = (props) => {
 
                   {/*  Image */}
                   <Container maxWidth='sm'>
-                     <img src={'/upload/' + props.image} alt={props.image} />
+                     <img
+                        src={'/upload/' + props.image}
+                        alt={props.image}
+                        style={{ maxWidth: 600 }}
+                     />
                   </Container>
 
                   <div
