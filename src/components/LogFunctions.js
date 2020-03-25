@@ -28,7 +28,7 @@ export const getLogsCount = async (theToken, code) => {
          code,
          caller: 'logFunctions.getLogsCount'
       });
-      console.log('log count:' + res.data);
+      console.log('log count (middle): ' + res.data);
       return res.data;
    } catch (err) {
       console.log('ClientSide Error @ logFunctions.getLogsCount' + err);
