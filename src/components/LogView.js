@@ -6,6 +6,7 @@ import { Msg } from './CustomWidget';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ErrorIcon from '@material-ui/icons/Error';
+import FormControl from '@material-ui/core/FormControl';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -92,6 +93,10 @@ const useStyles = makeStyles((theme) => ({
       '& > *': {
          marginTop: theme.spacing(2)
       }
+   },
+   formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120
    }
 }));
 
@@ -116,7 +121,8 @@ export const LogView = () => {
       setMsgClass('displayBlock');
       setSpinnerClass('displayBlock');
       setMsg('Getting logs from Database');
-      setPerPage(e.target.value);
+      setPerPage(parseInt(parseInt(e.target.value)));
+      console.log(e.target.value);
       getLogsCount(thetoken, code).then((theLogsCount) => {
          // calculate the number of pages  total logs / entries per page
          setLogsCount(theLogsCount);
@@ -136,7 +142,8 @@ export const LogView = () => {
       setMsgClass('displayBlock');
       setSpinnerClass('displayBlock');
       setMsg('Getting logs from Database');
-      setCode(e.target.value);
+      console.log(e.target.value);
+      setCode(parseInt(e.target.value));
       getLogsCount(thetoken, e.target.value).then((theLogsCount) => {
          setLogsCount(theLogsCount);
          getLogs(thetoken, e.target.value, perPage, page).then((data) => {
@@ -181,7 +188,6 @@ export const LogView = () => {
          }
       }
 
-      console.log(newPage);
       if (newPage >= 1 && newPage <= pageCount && newPage !== page) {
          setPage(newPage);
          setMsgClass('displayBlock');
@@ -250,7 +256,7 @@ export const LogView = () => {
                   <InputLabel id='page-label'>Per Page</InputLabel>
                   <Select
                      labelId='page-label'
-                     defaultValue={perPage}
+                     value={perPage}
                      onChange={(event) => {
                         perPageHandler(event);
                      }}
@@ -266,7 +272,7 @@ export const LogView = () => {
                   <InputLabel id='type-label'>Type</InputLabel>
                   <Select
                      labelId='type-label'
-                     defaultValue={code}
+                     value={code}
                      onChange={typeChange}
                   >
                      <MenuItem value={500}>500</MenuItem>

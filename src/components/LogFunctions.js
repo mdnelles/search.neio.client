@@ -7,8 +7,6 @@ if (thisServer.includes('3000')) serverPath = global.config.devPath;
 
 ////// playlists
 export const getLogs = async (theToken, code, perPage, page) => {
-   console.log('(middle) perPage = ' + perPage);
-   console.log('(middle) page = ' + page);
    try {
       const res = await axios.post(serverPath + '/logs/get_logs', {
          token: theToken,

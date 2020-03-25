@@ -34,22 +34,13 @@ const displayToggle = (id, dtype) => {
    }
    document.getElementById(dtype + '-' + id).className = newClass;
 };
-const Bold = (props) => {
-   return (
-      <b>
-         <u>{props.txt}</u>
-      </b>
-   );
-};
 
 const TheSearchResult = (props) => {
    let temp = window.location.href.toString().split('/');
    let rest = decodeURI(temp[temp.length - 2].toString());
    let titleFormatted =
       props.title.charAt(0).toUpperCase() + props.title.slice(1);
-   if (typeof titleFormatted && titleFormatted.includes(rest)) {
-      titleFormatted = titleFormatted.replace(rest, <Bold txt={rest} />);
-   }
+
    let thecode = props.code
       .toString()
       .replace(/&lt;/g, '<')
