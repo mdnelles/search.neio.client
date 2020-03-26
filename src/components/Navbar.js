@@ -34,7 +34,7 @@ export const Navbar = () => {
 
    const handleDB = () => {
       setAnchorEl(null);
-      window.open('https://lakes.world/mdb/dba/', '_blank').focus();
+      window.open('/_redirect2db.htm', '_blank').focus();
    };
 
    React.useEffect(() => {
