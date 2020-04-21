@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { login } from './UserFunctions';
+import React, { useState, useEffect } from "react";
+import { login } from "./UserFunctions";
 
-import localForage from 'localforage';
+import localForage from "localforage";
 
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
 //import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 //import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
 
 // for material ui
 const useStyles = makeStyles((theme) => ({
    root: {
-      'display': 'flex',
-      '& > * + *': {
-         marginLeft: theme.spacing(2)
+      "display": "flex",
+      "& > * + *": {
+         marginLeft: theme.spacing(2),
       },
-      '& .MuiTextField-root': {
+      "& .MuiTextField-root": {
          margin: theme.spacing(1),
          width: 200,
-         flexGrow: 1
+         flexGrow: 1,
       },
-      '& > *': {
-         margin: theme.spacing(1)
-      }
+      "& > *": {
+         margin: theme.spacing(1),
+      },
    },
    paper: {
       padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary
+      textAlign: "center",
+      color: theme.palette.text.secondary,
    },
    control: {
-      padding: theme.spacing(2)
-   }
+      padding: theme.spacing(2),
+   },
 }));
 ////// end material ui
 
@@ -48,57 +48,57 @@ const Msgbar = (props) => {
 };
 
 export const Landing = () => {
-   const [email, setEmail] = useState('mxnelles@gmail.com'),
-      [password, setPassword] = useState('password'),
-      [msg, setMsg] = useState('Enter valid credentials to proceed'),
-      [spinVis, setSpinVis] = useState('visible'),
+   const [email, setEmail] = useState(""),
+      [password, setPassword] = useState(""),
+      [msg, setMsg] = useState("Enter valid credentials to proceed"),
+      [spinVis, setSpinVis] = useState("visible"),
       classes = useStyles(); // for materialui
 
    function butClick(e) {
-      console.log('button clicked');
+      console.log("button clicked");
       e.preventDefault();
-      setSpinVis('visible');
-      setMsg('Checking credentials...');
+      setSpinVis("visible");
+      setMsg("Checking credentials...");
       const user = {
          email: email,
-         password: password
+         password: password,
       };
 
       if (
          email === null ||
          email === undefined ||
-         email === '' ||
+         email === "" ||
          password === null ||
          password === undefined ||
-         password === ''
+         password === ""
       ) {
-         setSpinVis('hid');
-         setMsg('Please ender valid login credentials');
+         setSpinVis("hid");
+         setMsg("Please ender valid login credentials");
       } else {
-         localForage.setItem('token', false); // clear old token if exists
+         localForage.setItem("token", false); // clear old token if exists
          login(user)
             .then((res) => {
                if (parseInt(res) !== null) {
-                  localForage.setItem('token', res);
+                  localForage.setItem("token", res);
 
                   setTimeout(() => {
-                     window.location.href = '/add';
+                     window.location.href = "/add";
                   }, 1000);
                } else {
-                  console.log('+++ unhandled error here: ' + __filename);
-                  setSpinVis('hid');
-                  setMsg('Login Failed');
+                  console.log("+++ unhandled error here: " + __filename);
+                  setSpinVis("hid");
+                  setMsg("Login Failed");
                }
             })
             .catch((err) => {
-               console.log('+++ error in file: ' + __filename + 'err=' + err);
+               console.log("+++ error in file: " + __filename + "err=" + err);
             });
       }
    }
 
    useEffect(() => {
-      setSpinVis('hid');
-      setMsg('Enter valid credentials to proceed');
+      setSpinVis("hid");
+      setMsg("Enter valid credentials to proceed");
    }, []);
 
    return (
