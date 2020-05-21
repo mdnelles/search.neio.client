@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { doQuery, updEntry, delEntry } from './SearchFunctions';
-import localForage from 'localforage';
-import Container from '@material-ui/core/Container';
+import React, { useEffect, useState } from "react";
+import { doQuery, updEntry, delEntry } from "./SearchFunctions";
+import localForage from "localforage";
+import Container from "@material-ui/core/Container";
 
-import { Msg } from './CustomWidget';
+import { Msg } from "./CustomWidget";
 
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Alert } from '@material-ui/lab';
-import TextField from '@material-ui/core/TextField';
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { Alert } from "@material-ui/lab";
+import TextField from "@material-ui/core/TextField";
 
 const kwStyle = {
-   fontSize: '.8em',
-   color: 'yellow',
-   marginLeft: 10
+   fontSize: ".8em",
+   color: "blue",
+   marginLeft: 10,
 };
 const searchTitle = {
-   color: '#cccccc',
-   cursor: 'pointer'
+   color: "#555555",
+   cursor: "pointer",
 };
 
 const lgBg = {
-   backgroundColor: '#ade0ff'
+   backgroundColor: "#ffffff",
 };
 const displayToggle = (id, dtype) => {
    let newClass,
-      c = document.getElementById(dtype + '-' + id).className;
-   if (c.toString().includes('displayNone')) {
-      newClass = c.toString().replace('displayNone', 'displayBlock');
+      c = document.getElementById(dtype + "-" + id).className;
+   if (c.toString().includes("displayNone")) {
+      newClass = c.toString().replace("displayNone", "displayBlock");
    } else {
-      newClass = c.toString().replace('displayBlock', 'displayNone');
+      newClass = c.toString().replace("displayBlock", "displayNone");
    }
-   document.getElementById(dtype + '-' + id).className = newClass;
+   document.getElementById(dtype + "-" + id).className = newClass;
 };
 
 const TheSearchResult = (props) => {
@@ -41,20 +41,19 @@ const TheSearchResult = (props) => {
 
    let thecode = props.code
       .toString()
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>');
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">");
    return (
-      <div className={'rowdata ' + props.bgc}>
+      <div className={"rowdata " + props.bgc}>
          <Grid container spacing={1}>
             <Grid item xs={12} sm={10}>
                <div
                   justify='flex-end'
                   className='displayNone'
-                  id={'etitle-' + props.id}
-                  style={lgBg}
+                  id={"etitle-" + props.id}
                >
                   <TextField
-                     id={'txtTitle-' + props.id}
+                     id={"txtTitle-" + props.id}
                      label='Intro'
                      multiline
                      rows='1'
@@ -66,10 +65,10 @@ const TheSearchResult = (props) => {
                <div
                   style={searchTitle}
                   className='displayBlock'
-                  id={'title-' + props.id}
+                  id={"title-" + props.id}
                   onClick={() => {
-                     displayToggle(props.id, 't');
-                     displayToggle(props.id, 'cmd');
+                     displayToggle(props.id, "t");
+                     displayToggle(props.id, "cmd");
                   }}
                >
                   {titleFormatted}
@@ -81,7 +80,7 @@ const TheSearchResult = (props) => {
                <div
                   justify='flex-end'
                   className='displayNone'
-                  id={'cmd-' + props.id}
+                  id={"cmd-" + props.id}
                >
                   <ButtonGroup
                      variant='contained'
@@ -98,18 +97,18 @@ const TheSearchResult = (props) => {
                </div>
             </Grid>
             <Grid item xs={12}>
-               <div className='displayNone' id={'t-' + props.id}>
-                  <div id={'intro-' + props.id} className='displayBlock'>
+               <div className='displayNone' id={"t-" + props.id}>
+                  <div id={"intro-" + props.id} className='displayBlock'>
                      <pre>{props.intro}</pre>
                      <br />
                   </div>
                   <div
-                     id={'eintro-' + props.id}
+                     id={"eintro-" + props.id}
                      className='displayNone'
                      style={lgBg}
                   >
                      <TextField
-                        id={'txtIntro-' + props.id}
+                        id={"txtIntro-" + props.id}
                         label='Intro'
                         multiline
                         rows='3'
@@ -120,20 +119,20 @@ const TheSearchResult = (props) => {
                   </div>
 
                   <pre>
-                     <code className='displayBlock' id={'code-' + props.id}>
+                     <code className='displayBlock' id={"code-" + props.id}>
                         {thecode}
                      </code>
                   </pre>
 
                   <div
-                     id={'ecode-' + props.id}
+                     id={"ecode-" + props.id}
                      className='displayNone'
                      style={lgBg}
                   >
                      {/* code */}
                      <TextField
-                        style={{ color: '#fff' }}
-                        id={'txtCode-' + props.id}
+                        style={{ color: "#fff" }}
+                        id={"txtCode-" + props.id}
                         label='code'
                         multiline
                         rows='15'
@@ -146,16 +145,16 @@ const TheSearchResult = (props) => {
                   {/*  Image */}
                   <Container maxWidth='sm'>
                      <img
-                        src={'/upload/' + props.image}
+                        src={"/upload/" + props.image}
                         alt={props.image}
                         style={{ maxWidth: 600 }}
                      />
                   </Container>
 
                   <div
-                     style={{ padding: 5, justify: 'center' }}
+                     style={{ padding: 5, justify: "center" }}
                      className='displayNone'
-                     id={'save-' + props.id}
+                     id={"save-" + props.id}
                   >
                      <ButtonGroup
                         variant='contained'
@@ -186,7 +185,7 @@ const AllSearchRes = (props) => {
       Array.isArray(props.searchResults)
    ) {
       props.searchResults.forEach((e, i) => {
-         tog === false ? (bgc = 'darkbg') : (bgc = 'graybg');
+         tog === false ? (bgc = "darkbg") : (bgc = "graybg");
          tog = !tog;
          props.searchResults[i].bgc = bgc;
       });
@@ -218,71 +217,71 @@ const AllSearchRes = (props) => {
 
 export const Search = () => {
    const updEntryStart = (id) => {
-      setMsgClass('displayBlock');
-      setSpinnerClass('displayBlock');
-      setMsg('Editing entry &#8594; database');
-      let title = document.getElementById('txtTitle-' + id).value;
-      let intro = document.getElementById('txtIntro-' + id).value;
-      let code = document.getElementById('txtCode-' + id).value;
+      setMsgClass("displayBlock");
+      setSpinnerClass("displayBlock");
+      setMsg("Editing entry &#8594; database");
+      let title = document.getElementById("txtTitle-" + id).value;
+      let intro = document.getElementById("txtIntro-" + id).value;
+      let code = document.getElementById("txtCode-" + id).value;
 
       updEntry(id, title, intro, code, thetoken).then((res) => {
-         setSpinnerClass('displayNone');
-         setMsg('Database Entry edited succcessfully');
-         setAlertColor('success');
+         setSpinnerClass("displayNone");
+         setMsg("Database Entry edited succcessfully");
+         setAlertColor("success");
 
          document.getElementById(
-            'title-' + id
-         ).innerHTML = document.getElementById('txtTitle-' + id).value;
-         document.getElementById('intro-' + id).innerHTML =
-            '<pre>' +
-            document.getElementById('txtIntro-' + id).value +
-            '</pre>';
+            "title-" + id
+         ).innerHTML = document.getElementById("txtTitle-" + id).value;
+         document.getElementById("intro-" + id).innerHTML =
+            "<pre>" +
+            document.getElementById("txtIntro-" + id).value +
+            "</pre>";
          document.getElementById(
-            'code-' + id
-         ).innerHTML = document.getElementById('txtCode-' + id).value;
+            "code-" + id
+         ).innerHTML = document.getElementById("txtCode-" + id).value;
 
          swapEditable(id);
       });
    };
 
    const swapEditable = (id) => {
-      displayToggle(id, 'code');
-      displayToggle(id, 'ecode');
-      displayToggle(id, 'save');
-      displayToggle(id, 'intro');
-      displayToggle(id, 'eintro');
-      displayToggle(id, 'title');
-      displayToggle(id, 'etitle');
+      displayToggle(id, "code");
+      displayToggle(id, "ecode");
+      displayToggle(id, "save");
+      displayToggle(id, "intro");
+      displayToggle(id, "eintro");
+      displayToggle(id, "title");
+      displayToggle(id, "etitle");
    };
 
    const removeEntryStart = (id) => {
-      if (window.confirm('Are you sure you want to delete this?')) {
+      if (window.confirm("Are you sure you want to delete this?")) {
          delEntry(thetoken, id)
             .then((res) => {
                setSearchResults(searchResults.filter((a) => a.id !== id));
                console.log(res);
             })
             .catch((err) => {
-               console.log('Err when trying to delete the entry: ' + err);
+               console.log("Err when trying to delete the entry: " + err);
             });
       } else {
          return false;
       }
    };
 
-   const [thetoken, setThetoken] = React.useState('');
-   const [searchQuery, setSearchQuery] = React.useState('');
+   const [thetoken, setThetoken] = React.useState("");
+   const [searchQuery, setSearchQuery] = React.useState("");
    const [searchResults, setSearchResults] = React.useState([]);
-   const [msgClass, setMsgClass] = useState('displayNone');
-   const [spinnerClass, setSpinnerClass] = useState('displayNone');
-   const [msg, setMsg] = useState('');
-   const [alertColor, setAlertColor] = useState('info');
+   const [msgClass, setMsgClass] = useState("displayNone");
+   const [spinnerClass, setSpinnerClass] = useState("displayNone");
+   const [msg, setMsg] = useState("");
+   const [alertColor, setAlertColor] = useState("info");
 
    useEffect(() => {
-      let temp = window.location.href.toString().split('/');
+      let temp = window.location.href.toString().split("/");
       let rest = decodeURI(temp[temp.length - 2].toString());
       setSearchQuery(rest);
-      localForage.getItem('token').then(function(theToken) {
+      localForage.getItem("token").then(function (theToken) {
          setThetoken(theToken);
          doQuery(theToken, encodeURI(rest)).then((res) => {
             console.log(res);

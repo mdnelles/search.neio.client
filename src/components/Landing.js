@@ -7,6 +7,9 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 //import Container from '@material-ui/core/Container';
 import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
 //import Paper from '@material-ui/core/Paper';
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -103,43 +106,33 @@ export const Landing = () => {
 
    return (
       <div className='vertical-center center-outer'>
-         <div className='box1 center-inner'>
+         <div className='center-inner'>
             <Msgbar msg={msg} spinVis={spinVis} />
 
             <form noValidate>
-               <Grid container className={classes.root} spacing={2}>
-                  <Grid item xs={12}>
-                     <Grid container justify='center' spacing={5}>
-                        <Grid item>
-                           <TextField
-                              label='email'
-                              defaultValue={email}
-                              onChange={(event) => setEmail(event.target.value)}
-                           />
-                        </Grid>
-
-                        <Grid item>
-                           <TextField
-                              label='Password'
-                              defaultValue={password}
-                              onChange={(event) =>
-                                 setPassword(event.target.value)
-                              }
-                           />
-                        </Grid>
-
-                        <Grid item className='bottom-align'>
-                           <Button
-                              variant='contained'
-                              color='default'
-                              onClick={butClick}
-                           >
-                              Login
-                           </Button>
-                        </Grid>
-                     </Grid>
-                  </Grid>
-               </Grid>
+               <Card className={classes.root}>
+                  <CardContent>
+                     <TextField
+                        label='email'
+                        defaultValue={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                     />
+                     <br />
+                     <TextField
+                        label='Password'
+                        defaultValue={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                     />
+                     <br />
+                     <Button
+                        variant='contained'
+                        color='default'
+                        onClick={butClick}
+                     >
+                        Login
+                     </Button>
+                  </CardContent>
+               </Card>
             </form>
          </div>
       </div>

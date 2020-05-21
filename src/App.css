@@ -1,7 +1,7 @@
 body {
-   background-color: #333333;
-   font-family: Ubuntu, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-      'Lucida Sans', Arial, sans-serif;
+   background-color: #eeeeee;
+   font-family: Ubuntu, "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
 }
 .App {
    /*
@@ -102,26 +102,24 @@ body {
    padding-right: 10px;
    padding-bottom: 10px;
    margin: 5px;
-   background-color: #222222;
-   color: #ffffff;
    justify-content: flex-start;
 }
 .darkbg {
-   background-color: #111111;
+   background-color: #fff;
 }
 .graybg {
-   background-color: #222222;
+   background-color: #efefef;
 }
 .rowdata {
    padding: 8px;
-   color: #dddddd;
+   color: #333333;
 }
 .rowdata:hover {
-   background-color: #0f4aa8;
+   background-color: #dddddd;
 }
 .pbColor {
    /* pointy bracket */
-   color: yellow;
+   color: red;
 }
 .cbColor {
    /* curly bracket color formating */
@@ -141,7 +139,7 @@ body {
    width: 100%;
 }
 .lgBG {
-   background-color: '#aaaaaa';
+   background-color: "#aaaaaa";
    border-radius: 3px;
 }
 .gridItem {
