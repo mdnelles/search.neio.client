@@ -1,46 +1,46 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { getTitles } from './SearchFunctions';
-import localForage from 'localforage';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { getTitles } from "./SearchFunctions";
+import localForage from "localforage";
 
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuIcon from '@material-ui/icons/Menu';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import MenuIcon from "@material-ui/icons/Menu";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
 
-import { logout } from './UserFunctions';
+import { logout } from "./UserFunctions";
 
 export const Navbar = () => {
    const [anchorEl, setAnchorEl] = React.useState(null);
    const [afDone, setAfDone] = React.useState(false);
    const [searchTitles, setSearchTitle] = React.useState([]);
-   const [query, setQuery] = React.useState('');
+   const [query, setQuery] = React.useState("");
    const history = useHistory();
    const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
    };
 
    const handleClose = (e) => {
-      window.top.location = '/' + e.target.id;
+      window.top.location = "/" + e.target.id;
       setAnchorEl(null);
    };
 
    const handleDB = () => {
       setAnchorEl(null);
-      window.open('/_redirect2db.htm', '_blank').focus();
+      window.open("/_redirect2db.htm", "_blank").focus();
    };
 
    React.useEffect(() => {
       //localForage.getItem('token', function(err, theToken) {
       if (afDone === false) {
-         localForage.getItem('token').then(function(theToken) {
+         localForage.getItem("token").then(function (theToken) {
             if (searchTitles.length < 2) {
                getTitles(theToken).then((data) => {
                   setSearchTitle(data);
@@ -55,12 +55,12 @@ export const Navbar = () => {
 
    const useStyles = makeStyles((theme) => ({
       root: {
-         display: 'flex',
-         flexWrap: 'wrap'
+         display: "flex",
+         flexWrap: "wrap",
       },
       margin: {
-         margin: theme.spacing(1)
-      }
+         margin: theme.spacing(1),
+      },
    }));
 
    const classes = useStyles();
@@ -69,17 +69,17 @@ export const Navbar = () => {
 
    const addSelected = (event) => {
       setTimeout(() => {
-         var temp = document.getElementById('autocomplete').value;
+         var temp = document.getElementById("autocomplete").value;
          console.log(temp);
          setQuery(encodeURI(temp));
       }, 300); // need slight delay so DOM can update
    };
 
    const handleKeyDown = (e) => {
-      if (e.key === 'Enter') {
-         console.log('moving to search with query:  /search/' + query);
+      if (e.key === "Enter") {
+         console.log("moving to search with query:  /search/" + query);
          history.push({
-            pathname: '/search/' + query + '/'
+            pathname: "/search/" + query + "/",
          });
       }
    };
@@ -94,7 +94,7 @@ export const Navbar = () => {
                      aria-haspopup='true'
                      onClick={handleClick}
                   >
-                     <MenuIcon style={{ fill: 'white' }} fontSize='large' />
+                     <MenuIcon style={{ fill: "white" }} fontSize='large' />
                   </Button>
                   <Menu
                      id='simple-menu'
@@ -118,6 +118,9 @@ export const Navbar = () => {
                      <MenuItem onClick={handleClose} id='categories'>
                         Manage Categories
                      </MenuItem>
+                     <MenuItem onClick={handleClose} id='snippet'>
+                        Create Snippet
+                     </MenuItem>
                      <MenuItem onClick={handleDB} id='pma'>
                         PhpMyAdmin
                      </MenuItem>
@@ -137,8 +140,8 @@ export const Navbar = () => {
                      getOptionLabel={(option) => option.title}
                      style={{
                         width: 600,
-                        color: 'white',
-                        marginTop: -20
+                        color: "white",
+                        marginTop: -20,
                      }}
                      renderInput={(params) => (
                         <TextField
@@ -159,13 +162,13 @@ export const Navbar = () => {
             <Grid item xs={4} sm={2}>
                <AddCircleOutlineIcon
                   className='pointer'
-                  style={{ fill: 'white', marginTop: 10 }}
-                  onClick={() => (window.location.href = '/add')}
+                  style={{ fill: "white", marginTop: 10 }}
+                  onClick={() => (window.location.href = "/add")}
                   fontSize='large'
                />
                <AccountCircleIcon
                   className='pointer'
-                  style={{ fill: 'white', marginTop: 10 }}
+                  style={{ fill: "white", marginTop: 10 }}
                   onClick={logout}
                   fontSize='large'
                />

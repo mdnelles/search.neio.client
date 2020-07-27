@@ -52,7 +52,7 @@ const Msgbar = (props) => {
 
 export const Landing = () => {
    const [email, setEmail] = useState(""),
-      [password, setPassword] = useState(""),
+      [password, setPassword] = useState("WSmWxQ@([X;SY3?J"),
       [msg, setMsg] = useState("Enter valid credentials to proceed"),
       [spinVis, setSpinVis] = useState("visible"),
       classes = useStyles(); // for materialui
@@ -120,6 +120,7 @@ export const Landing = () => {
                      <br />
                      <TextField
                         label='Password'
+                        type='password'
                         defaultValue={password}
                         onChange={(event) => setPassword(event.target.value)}
                      />
