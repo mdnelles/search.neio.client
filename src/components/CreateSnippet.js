@@ -22,15 +22,6 @@ const useStyles = makeStyles((theme) => ({
    },
 }));
 
-const sqlPrep = (s) => {
-   s = s.replace(/'/gi, "`");
-   s = s.replace(/"/gi, '\\"');
-   s = s.replace(/</g, "&lt;"); //for <
-   s = s.replace(/>/g, "&gt;"); //for >
-
-   return s;
-};
-
 export const CreateSnippet = () => {
    const [title, setTitle] = useState(""),
       [prefix, setPrefix] = useState(""),
